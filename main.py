@@ -20,26 +20,16 @@ def get_word_from_base(position):
 
 
 def ciphered_word(word):
-	for _ in range(len(word)):
-		print("_ ")
+	return ['_' for x in range(len(word))]
 
 
 def test():
-	print("Hello, game!")
 
 	MAGIC_WORD = 'lighter'.upper()
 
-	logic_rule = 'yes'
-	counter = 0
+	letter = 'g'.upper()
 
-	while logic_rule == 'yes':
-		logic_rule = input("Continue our cicle? ")
-		print(counter)
-		counter += 1
-
-	print("The last iteration {}".format(counter))
-	print("End of the cicle.\nGoodbye!!!\n\n")
-	ciphered_word(MAGIC_WORD)
+	print(MAGIC_WORD.index('G'))
 
 
 def main():
@@ -62,17 +52,47 @@ def game_circle():
 	hp = 6
 
 	chosen_letters = []
-	wrong_letters = []
-
-	#print(graphics.pictures[0])
 
 	start_game_choice = input("Would you like to start a game? yes/no ")
 
 	while start_game_choice != 'no':
 
-		
+		WORD = get_word_from_base(randrange(0, 213)).upper()
+
+		print(WORD)
+		secret_word = ciphered_word(WORD)
+
+		while hp != 0:
+
+			print(graphics.pictures[hp])
+
+
+			print(secret_word)
+
+			print(f"Chosen letters: {chosen_letters}")
+
+			choice_letter = input("Enter guessing letter  ").upper()
+			print(choice_letter)
+
+			if choice_letter in WORD:
+				print("RIGHT!")
+				for letter in WORD:
+					print(letter)
+					if letter == choice_letter:
+						print(WORD.index(letter))
+						secret_word[WORD.index(letter)] = letter
+						print(secret_word[WORD.index(letter)])
+			else: 
+				print("WRONG!")
+				hp -= 1
+
+			chosen_letters.append(choice_letter)
+
+		print("=====GAME_OVER=====")
+
 		start_game_choice = input("Do we play another game? yes/no ")
+	
 
 
-
+#test()
 game_circle()
