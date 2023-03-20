@@ -1,4 +1,4 @@
-import textwrap, time
+import textwrap
 
 
 pictures = {
@@ -75,12 +75,5 @@ pictures = {
 
 }
 
-
-
-def main():
-    print("hello from module graphics")
-    for i in range(7):
-      print(textwrap.dedent(pictures[i]))
-      time.sleep(2)
 
 

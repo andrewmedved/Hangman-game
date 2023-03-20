@@ -1,6 +1,8 @@
 import sys
 import graphics
 import textwrap
+import time
+import os
 from random import randrange
 
 
@@ -20,7 +22,8 @@ def get_word_from_base(position):
 
 
 def ciphered_word(word):
-	return ['_' for x in range(len(word))]
+	word = word.strip()
+	return ['_' for _ in range(len(word))]
 
 
 def test():
@@ -49,20 +52,29 @@ def main():
 
 def game_circle():
 
-	hp = 6
-
-	chosen_letters = []
 
 	start_game_choice = input("Would you like to start a game? yes/no ")
 
 	while start_game_choice != 'no':
+
+		hp = 6
+
+		chosen_letters = []
 
 		WORD = get_word_from_base(randrange(0, 213)).upper()
 
 		print(WORD)
 		secret_word = ciphered_word(WORD)
 
-		while hp != 0:
+		while True:
+
+			if hp == 0:
+				print("=====GAME_OVER=====")
+				break
+
+			if '_' not in secret_word:
+				print("OOH YEAHH! YOU WON!")
+				break
 
 			print(graphics.pictures[hp])
 
@@ -72,23 +84,26 @@ def game_circle():
 			print(f"Chosen letters: {chosen_letters}")
 
 			choice_letter = input("Enter guessing letter  ").upper()
-			print(choice_letter)
+
+			if (choice_letter in chosen_letters) or (choice_letter == ''): 
+				print("Please print unique letter.")
+				time.sleep(1)
+				continue
 
 			if choice_letter in WORD:
 				print("RIGHT!")
-				for letter in WORD:
-					print(letter)
+				for i in range(len(WORD)):
+					letter = WORD[i]
 					if letter == choice_letter:
-						print(WORD.index(letter))
-						secret_word[WORD.index(letter)] = letter
-						print(secret_word[WORD.index(letter)])
+						secret_word[i] = letter
 			else: 
 				print("WRONG!")
+				time.sleep(1)
 				hp -= 1
 
 			chosen_letters.append(choice_letter)
+			os.system('clear')
 
-		print("=====GAME_OVER=====")
 
 		start_game_choice = input("Do we play another game? yes/no ")
 	
