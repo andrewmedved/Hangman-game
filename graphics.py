@@ -3,7 +3,7 @@ import textwrap, time
 
 pictures = {
 
-        0 : """ 
+        6 : """ 
            _ /\\_ _ _ _  
              ||    |    
              ||        
@@ -13,7 +13,7 @@ pictures = {
           ___||_________
          """,
 
-        1 : """ 
+        5 : """ 
            _ /\\_ _ _ _  
              ||    |    
              ||    0    
@@ -23,7 +23,7 @@ pictures = {
           ___||_________
          """,
 
-        2 : """ 
+        4 : """ 
            _ /\\_ _ _ _  
              ||    |    
              ||    0    
@@ -43,7 +43,7 @@ pictures = {
           ___||_________
          """,
 
-        4 : """ 
+        2 : """ 
            _ /\\_ _ _ _  
              ||    |    
              ||    0    
@@ -53,7 +53,7 @@ pictures = {
           ___||_________
          """,
 
-        5 : """ 
+        1 : """ 
            _ /\\_ _ _ _  
              ||    |    
              ||    0    
@@ -63,7 +63,7 @@ pictures = {
           ___||_________
          """,
 
-        6 : """ 
+        0 : """ 
            _ /\\_ _ _ _  
              ||    |    
              ||    0    
@@ -75,6 +75,12 @@ pictures = {
 
 }
 
-for i in range(7):
-    print(textwrap.dedent(pictures[i]))
-    time.sleep(2)
+
+
+def main():
+    print("hello from module graphics")
+    for i in range(7):
+      print(textwrap.dedent(pictures[i]))
+      time.sleep(2)
+
+
